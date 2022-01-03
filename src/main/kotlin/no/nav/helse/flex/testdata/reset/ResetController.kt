@@ -26,7 +26,7 @@ class ResetController(
         }
 
         producer.send(ProducerRecord(TESTDATA_RESET_TOPIC, fnr, null)).get()
-        val resultat = "Resetting av $fnr bestilt"
+        val resultat = "Resetting av $fnr bestilt hos flex apper fra flex-testdata-reset"
         log.info(resultat)
         return ResponseEntity.ok(resultat)
     }
