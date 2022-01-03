@@ -33,3 +33,4 @@ spec:
     - team: flex
       application: syfosoknad
       access: read
+
