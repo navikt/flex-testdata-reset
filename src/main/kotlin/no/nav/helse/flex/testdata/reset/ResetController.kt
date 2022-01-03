@@ -1,6 +1,7 @@
 package no.nav.helse.flex.testdata.reset
 
 import no.nav.helse.flex.testdata.kafka.TESTDATA_RESET_TOPIC
+import no.nav.helse.flex.testdata.logger
 import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.springframework.http.ResponseEntity
@@ -15,14 +16,18 @@ class ResetController(
 
 ) {
 
+    val log = logger()
+
     @DeleteMapping(value = ["/api/testdata/{fnr}"])
     @CrossOrigin
-    fun nullstillAktor(@PathVariable fnr: String): ResponseEntity<String> {
+    fun nullstillPerson(@PathVariable fnr: String): ResponseEntity<String> {
         if (fnr.any { !it.isDigit() } || fnr.length != 11) {
             return ResponseEntity.badRequest().body("Ugyldig format på fnr")
         }
 
         producer.send(ProducerRecord(TESTDATA_RESET_TOPIC, fnr, null)).get()
-        return ResponseEntity.ok("Resetting av $fnr bestilt")
+        val resultat = "Resetting av $fnr bestilt"
+        log.info(resultat)
+        return ResponseEntity.ok(resultat)
     }
 }
