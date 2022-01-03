@@ -5,7 +5,7 @@ on:
       - nais/topics/**
       - .github/workflows/topic.yml
 jobs:
-  deploy-topic-to-dev:
+  deploy-topic-til-dev:
     if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/dev-')
     name: Deploy topic to dev-gcp
     runs-on: ubuntu-latest
