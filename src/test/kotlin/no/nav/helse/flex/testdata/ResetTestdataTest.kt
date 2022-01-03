@@ -15,7 +15,7 @@ class ResetTestdataTest : Testoppsett() {
             .andExpect(status().isOk)
             .andReturn().response.contentAsString
 
-        response `should be equal to` "Resetting av $fnr bestilt hos flex apper fra flex-testdata-reset"
+        response `should be equal to` "Nullstilling av $fnr bestilt hos flex apper fra flex-testdata-reset"
 
         val records = kafkaConsumer.ventPåRecords(antall = 1)
         records shouldHaveSize 1
