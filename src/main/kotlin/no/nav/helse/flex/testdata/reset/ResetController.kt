@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class ResetController(
-    private val producer: KafkaProducer<String, String?>
+    private val producer: KafkaProducer<String, String>
 
 ) {
 
@@ -25,7 +25,7 @@ class ResetController(
             return ResponseEntity.badRequest().body("Ugyldig format på fnr")
         }
 
-        producer.send(ProducerRecord(TESTDATA_RESET_TOPIC, fnr, null)).get()
+        producer.send(ProducerRecord(TESTDATA_RESET_TOPIC, fnr, fnr)).get()
         val resultat = "Resetting av $fnr bestilt hos flex apper fra flex-testdata-reset"
         log.info(resultat)
         return ResponseEntity.ok(resultat)

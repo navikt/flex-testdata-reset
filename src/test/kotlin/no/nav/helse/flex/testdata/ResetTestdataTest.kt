@@ -1,7 +1,6 @@
 package no.nav.helse.flex.testdata
 
 import org.amshove.kluent.`should be equal to`
-import org.amshove.kluent.`should be null`
 import org.amshove.kluent.shouldHaveSize
 import org.junit.jupiter.api.Test
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
@@ -21,7 +20,7 @@ class ResetTestdataTest : Testoppsett() {
         val records = kafkaConsumer.ventPåRecords(antall = 1)
         records shouldHaveSize 1
         records.first().key() `should be equal to` fnr
-        records.first().value().`should be null`()
+        records.first().value() `should be equal to` fnr
     }
 
     @Test

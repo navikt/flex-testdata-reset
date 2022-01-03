@@ -40,7 +40,7 @@ class AivenKafkaConfig(
     )
 
     @Bean
-    fun kafkaProducer(): KafkaProducer<String, String?> {
+    fun kafkaProducer(): KafkaProducer<String, String> {
         val config = mapOf(
             ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
             ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,

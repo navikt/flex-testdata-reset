@@ -12,7 +12,7 @@ class TestAivenKafkaConfig(
 
 ) {
     @Bean
-    fun kafkaConsumer() = KafkaConsumer<String, String?>(consumerConfig())
+    fun kafkaConsumer() = KafkaConsumer<String, String>(consumerConfig())
 
     private fun consumerConfig() = mapOf(
         ConsumerConfig.GROUP_ID_CONFIG to "testing-group-id",
