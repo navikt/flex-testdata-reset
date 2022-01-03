@@ -12,10 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
-      - name: Deploy topic syketilfellebit to dev-gcp
+      - name: Deploy topic til dev-gcp
         uses: nais/deploy/actions/deploy@master
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
-          RESOURCE: nais/topics/syketilfellebit-topic.yaml
+          RESOURCE: nais/topics/flex-testdata-reset-topic.yaml
           VARS: nais/topics/dev.json
