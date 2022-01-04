@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
+import java.util.*
 
 @RestController
 class ResetController(
@@ -24,9 +25,9 @@ class ResetController(
         if (fnr.any { !it.isDigit() } || fnr.length != 11) {
             return ResponseEntity.badRequest().body("Ugyldig format på fnr")
         }
-
-        producer.send(ProducerRecord(TESTDATA_RESET_TOPIC, fnr, fnr)).get()
-        val resultat = "Nullstilling av $fnr bestilt hos flex apper fra flex-testdata-reset"
+        val key = UUID.randomUUID().toString()
+        producer.send(ProducerRecord(TESTDATA_RESET_TOPIC, key, fnr)).get()
+        val resultat = "Nullstilling av $fnr bestilt hos flex apper fra flex-testdata-reset med key $key"
         log.info(resultat)
         return ResponseEntity.ok(resultat)
     }
