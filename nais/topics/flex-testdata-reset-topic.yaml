@@ -30,3 +30,6 @@ spec:
     - team: flex
       application: spinnsyn-backend
       access: read
+    - team: flex
+      application: flex-juridisk-vurdering-test-backend
+      access: read
