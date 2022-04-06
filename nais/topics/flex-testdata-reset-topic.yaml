@@ -33,3 +33,6 @@ spec:
     - team: flex
       application: flex-juridisk-vurdering-test-backend
       access: read
+    - team: flex
+      application: sykepengesoknad-backend
+      access: read
