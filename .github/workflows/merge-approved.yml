@@ -8,9 +8,9 @@ jobs:
     if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This PR was approved. Actor er $ACTOR"
+      - run: echo "This PR was approved. User er $USER"
         env:
-          ACTOR: ${{ github.actor }}
+          USER: ${{ github.review.user.login }}
       - run: echo "PR URL $ACTOR"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
