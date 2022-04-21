@@ -5,12 +5,9 @@ on:
 
 jobs:
   approved:
-    if: github.event.review.state == 'approved'
+    if: github.event.review.state == 'approved' $$ github.event.pull_request.user.login == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - run: echo "This PR was approved. User er $USER"
         env:
           USER: ${{ github.event.pull_request.user.login }}
-      - run: echo "PR URL $ACTOR"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
