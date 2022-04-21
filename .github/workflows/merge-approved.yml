@@ -1,0 +1,16 @@
+name: "Merge approved dependencies"
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  approved:
+    if: github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This PR was approved. Actor er $ACTOR"
+        env:
+          ACTOR: ${{ github.actor }}
+      - run: echo "PR URL $ACTOR"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
