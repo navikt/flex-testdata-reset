@@ -22,9 +22,6 @@ spec:
       application: syfosyketilfelle
       access: read
     - team: flex
-      application: syfosoknad
-      access: read
-    - team: flex
       application: flex-syketilfelle
       access: read
     - team: flex
@@ -35,4 +32,7 @@ spec:
       access: read
     - team: flex
       application: sykepengesoknad-backend
+      access: read
+    - team: flex
+      application: ditt-sykefravaer-backend
       access: read
